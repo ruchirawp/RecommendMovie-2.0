@@ -20,17 +20,17 @@ const Shows = () => {
 
       if(userTemp){
         Promise.all([
-          fetch("/shows/rec", {
+          fetch(`${baseUrl}/shows/rec`, {
             method: 'GET', 
             headers:{
               'authorization': `Bearer ${userTemp.token}`,
               'Content-Type': 'application/json'
             }
           }),
-          fetch("/shows", {
+          fetch(`${baseUrl}/shows`, {
             method: 'GET', 
           }),
-          fetch("/shows/getliked", {
+          fetch(`${baseUrl}/shows/getliked`, {
             method: 'GET', 
             headers:{
               'authorization': `Bearer ${userTemp.token}`,
