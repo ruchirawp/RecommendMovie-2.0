@@ -1,0 +1,233 @@
+/* GLOBAL CSS */
+
+:root {
+  --DarkGrey: #222831;
+  --Grey: #393E46;
+  --Yellow: #FFD369;
+  --White: #faf0e6;
+}
+
+html{height: 100%;}
+
+body{
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+/* background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png"); */
+background-color: var(--Grey);
+background-image: url("https://www.transparenttextures.com/patterns/climpek.png");
+font-family: "Montserrat";
+
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+/* NAVBAR CSS */
+.navBarStyling{
+  background-color: var(--DarkGrey);
+}
+
+.logo {
+  height: 50px;
+}
+
+.movieCard {
+  height: 100%;
+  width: 100%;
+}
+
+.siteNav {
+  margin-bottom: 2%;
+}
+
+/*SEARCH BAR*/
+.searchBar {
+  background-color: #272626;
+  /* color: #f2ec7f; */
+  color: var(--Yellow);
+}
+/*Page Titles*/
+
+/* MOVIE ROW CSS  */
+
+/*movie row headers*/
+
+.displayRow {
+  height: 530px;
+}
+
+.displayRow .displayRowTitle {
+  color: rgb(217, 217, 217);
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.displayGridTitle{
+  color: rgb(217, 217, 217);
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* MOVIE CARD CSS  */
+
+.itemCard{
+  max-height: 500px;
+}
+
+.itemCard ::-webkit-scrollbar {
+  width: 0.2em;
+}
+ 
+.itemCard::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+ 
+.itemCard ::-webkit-scrollbar-thumb {
+  background-color: var(--DarkGrey);
+}
+
+.flip-card-back h2 {
+  font-size: 1.5rem;
+}
+
+.flip-card-back {
+  padding: 20px;
+}
+
+.itemOverview{
+  overflow-y: auto;
+  max-height: 50%;
+  resize: none; /* Remove this if you want the user to resize the textarea */
+}
+
+.releaseDate{
+  font-size: 0.8rem;
+  margin-bottom: 5%;
+}
+
+.heartSection {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 3%;
+  text-align: center;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 450px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  margin-bottom: 100px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: rgba(33, 51, 68, 0.664);
+  color: rgb(255, 255, 255);
+  transform: rotateY(180deg);
+}
+
+.likedColor {
+  color: #d44f4f;
+}
+
+/*  SEARCH GRID   */
+.searchResults{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* FOOTER */
+
+.footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #212127;
+}
+
+
+/* LOGIN FORM */
+.FormAlign{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.formHeader{
+  /* font-family:Verdana; */
+  font-weight: 600;
+}
+.LoginForm{
+  margin: auto;
+  color:  var(--DarkGrey);
+}
+
+.loginbtn{
+  display:block;
+  margin: 0 auto 0 auto;
+  /* background-color: #abaf69; */
+  background-color: var(--Grey);
+}
+
+.LoginContainer{
+    background-image:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.322),  var(--Yellow)),
+    url('https://ventsmagazine.com/wp-content/uploads/2019/12/best-strains-high-movie-watching.jpg');
+    width: 60%;
+    height: 600px;
+    background-size: cover;
+    padding: 20px;
+    margin: auto;
+
+  
+}
+
+.formIcons{
+  color: var(--Grey);
+}
+

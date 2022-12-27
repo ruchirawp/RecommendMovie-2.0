@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Register from './components/Register';
+import Movies from './components/movies/Movies';
+import Login from './components/Login';
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { UserContext, SearchContext } from './UserContext';
+import { useState } from "react";
+import Footer from './components/Footer';
+import Search from './components/search/Search';
+import Shows from './components/shows/Shows';
+import About from './components/About';
 
 function App() {
+
+  const [user, setUser] = useState(null)
+  const [searchQuery, setSearchQuery] = useState(null)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <UserContext.Provider value={{user,setUser}}>
+    <SearchContext.Provider value={{searchQuery,setSearchQuery} }>
+        <Navbar/>
+        <Routes>
+          <Route path="/search" element={searchQuery? <Search query={searchQuery}/> : <Navigate to="/movies"/>} />
+          <Route path='/movies' element = { <Movies/> } />
+          <Route path="/" element={<Movies />} />
+          <Route path="/shows" element={< Shows />} /> 
+          {/* <Route path="/about" element={<About />} /> */}
+          {/* use <Navigate to redirect to the movies page after logging in or registering */}
+          <Route path="/register" element={user? <Navigate to="/movies"/>: <Register />} />
+          <Route path="/login" element={user? <Navigate to="/movies"/>: <Login />} />
+        </Routes>
+        <Footer/>
+    </SearchContext.Provider>
+    </UserContext.Provider>
     </div>
   );
 }
-
 export default App;
