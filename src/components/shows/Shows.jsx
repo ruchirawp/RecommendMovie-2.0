@@ -72,7 +72,7 @@ const Shows = () => {
 
   return (
     <div>
-  {updatedLiked? <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}><i class="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended</button> :null }
+  {updatedLiked&&user? <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}><i class="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended</button> :null }
       
         {user&&recShows? <DisplayRow setRefresh={setUpdatedLiked} header="Recommended" rowData={recShows} allLiked={allLiked}/> : null}
         <DisplayRow header="Popular" setRefresh={setUpdatedLiked} rowData={popularShows} allLiked={allLiked}/>
