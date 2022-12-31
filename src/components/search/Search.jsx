@@ -4,6 +4,8 @@ import axios from 'axios';
 import DisplayRow from '../display/DisplayRow';
 import SearchGrid from './SearchGrid';
 import "../../styles.css";
+import { baseUrl } from "../../services/baseValues";
+
 
 
 const Search = () => {
@@ -14,7 +16,7 @@ const Search = () => {
     useEffect(() => {
         const fetchData = async () => {
             const dataDefault = await axios(
-              `http://localhost:3001/search/${searchQuery}`
+              `${baseUrl}/search/${searchQuery}`
             );
             setSearchResults(dataDefault.data)
           };
