@@ -25,7 +25,8 @@ function App() {
         <Routes>
           <Route path="/search" element={searchQuery? <Search query={searchQuery}/> : <Navigate to="/movies"/>} />
           <Route path='/movies' element = { <Movies/> } />
-          <Route path="/" element={<Movies />} />
+          {/* <Route path="/" element={<Movies />} /> */}
+          <Route path="/" element={<Navigate to="/movies"/>} />
           <Route path="/shows" element={< Shows />} /> 
           {/* <Route path="/about" element={<About />} /> */}
           {/* use <Navigate to redirect to the movies page after logging in or registering */}

@@ -46,7 +46,12 @@ const Movies = () => {
           Promise.all([resRec.json(), resDefault.json(), resLiked.json()])
         )
         .then (([dataRec, dataDefault,dataLiked]) => {
-          (dataRec.recommendedMovies.length<1? setRecMovies(null):setRecMovies(dataRec.recommendedMovies))
+          if (dataRec){
+            (dataRec.recommendedMovies.length<1? setRecMovies(null):setRecMovies(dataRec.recommendedMovies))
+          }
+          else{
+            setRecMovies(null)
+          }
           setTopRated(dataDefault.topRatedMovies)
           setPopularMovies(dataDefault.popularMovies)
           setUpcomingMovies(dataDefault.upcomingMovies) 
@@ -56,7 +61,7 @@ const Movies = () => {
     }
     else{
 
-      console.log("USER: ", userTemp)
+      // console.log("USER: ", userTemp)
       const fetchData = async () => {
         const dataDefault = await axios(
           // `http://localhost:3001/movies`
@@ -68,6 +73,7 @@ const Movies = () => {
       };
       fetchData();
     }
+
     setIsLoading(false)
     }, [])
 

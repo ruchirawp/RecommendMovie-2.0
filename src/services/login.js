@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { baseUrl } from "../../services/baseValues";
+import { baseUrl } from './baseValues'
 // const baseUrl = '/login'
 
 const login = async credentials => {
