@@ -19,7 +19,7 @@ import { baseUrl } from "../../services/baseValues";
 
 
 
-const DisplayCard = ({ cardData, cardType, allLiked }) => {
+const DisplayCard = ({ cardData, cardType, allLiked, setRefresh }) => {
   const [liked, setLiked] = useState(false);
   const { user, setUser } = useContext(UserContext);
 
@@ -80,6 +80,8 @@ const DisplayCard = ({ cardData, cardType, allLiked }) => {
 
     toggleLike();
     setLiked(!liked);
+    setRefresh(true)
+
   };
 
   return (

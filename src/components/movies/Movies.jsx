@@ -3,7 +3,12 @@ import { UserContext } from "../../UserContext";
 import DisplayRow from "../display/DisplayRow";
 import axios from 'axios'
 import Spinner from "../UI/Spinner";
+import ReplayIcon from '@mui/icons-material/Replay';
 import { baseUrl } from "../../services/baseValues";
+import Button from '@mui/material/Button';
+import "../../styles.css";
+
+
 
 
 const Movies = () => {
@@ -15,6 +20,10 @@ const Movies = () => {
     const [topRated, setTopRated] = useState(null)
     const [allLiked, setAllLiked] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+
+
+    const [updatedLiked, setUpdatedLiked] = useState(false)
+    const [reloadRec, setReloadRec] = useState(false)
 
     useEffect(() => {
 
@@ -75,7 +84,12 @@ const Movies = () => {
     }
 
     setIsLoading(false)
-    }, [])
+    }, [reloadRec])
+
+    const handleClick = () => {
+      setUpdatedLiked(false)
+      setReloadRec(!reloadRec)
+    }
 
   return (
     <div>
@@ -83,10 +97,13 @@ const Movies = () => {
         {isLoading?
         <h1>LOADING... </h1>:
         <>
-        {user&&recMovies? <DisplayRow header="Recommended" rowData={recMovies} allLiked={allLiked}/> : null}
-        <DisplayRow header="Popular" rowData={popularMovies} allLiked={allLiked}/>
-        <DisplayRow header="Top Rated" rowData={topRated} allLiked={allLiked}/>
-        <DisplayRow header="Upcoming" rowData={upcomingMovies} allLiked={allLiked}/>
+        
+      {updatedLiked? <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}><i class="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended</button> :null }
+
+        {user&&recMovies? <DisplayRow setRefresh={setUpdatedLiked} header="Recommended" rowData={recMovies} allLiked={allLiked}/> : null}
+        <DisplayRow header="Popular" setRefresh={setUpdatedLiked} rowData={popularMovies} allLiked={allLiked}/>
+        <DisplayRow header="Top Rated" setRefresh={setUpdatedLiked} rowData={topRated} allLiked={allLiked}/>
+        <DisplayRow header="Upcoming" setRefresh={setUpdatedLiked} rowData={upcomingMovies} allLiked={allLiked}/>
         </>
         }
         </div>

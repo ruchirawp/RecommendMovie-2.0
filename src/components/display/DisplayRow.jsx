@@ -4,7 +4,7 @@ import Carousel from 'react-grid-carousel'
 import "../../styles.css";
 import Spinner from "../UI/Spinner";
 
-const DisplayRow = ({ header, rowData, allLiked}) => {
+const DisplayRow = ({ header, rowData, allLiked, setRefresh}) => {
   return (
 
     <div className="displayRow">
@@ -14,7 +14,7 @@ const DisplayRow = ({ header, rowData, allLiked}) => {
       {rowData? rowData.map((item, index) => {
               return (
                 <Carousel.Item key={index}>
-                    <MovieCard cardData={item} cardType={item.first_air_date? "show": "movie"} allLiked={allLiked}/>     
+                    <MovieCard setRefresh={setRefresh} cardData={item} cardType={item.first_air_date? "show": "movie"} allLiked={allLiked}/>     
                   </Carousel.Item>
               )   
             }): <Spinner/>}

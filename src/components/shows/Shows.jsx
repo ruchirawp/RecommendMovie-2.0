@@ -11,7 +11,8 @@ const Shows = () => {
     const [topRatedShows, setTopRatedShows] = useState(null)
     const [popularShows, setPopularShows] = useState(null)
     const [allLiked, setAllLiked] = useState(null)
-
+    const [updatedLiked, setUpdatedLiked] = useState(false)
+    const [reloadRec, setReloadRec] = useState(false)
 
     useEffect(() => {
 
@@ -62,13 +63,20 @@ const Shows = () => {
       };
       fetchData();
     }
-    }, [])
+    }, [reloadRec])
+
+    const handleClick = () => {
+      setUpdatedLiked(false)
+      setReloadRec(!reloadRec)
+    }
 
   return (
     <div>
-        {user&&recShows? <DisplayRow header="Recommended" rowData={recShows} allLiked={allLiked}/> : null}
-        <DisplayRow header="Popular" rowData={popularShows} allLiked={allLiked}/>
-        <DisplayRow header="Top Rated" rowData={topRatedShows} allLiked={allLiked}/>
+  {updatedLiked? <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}><i class="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended</button> :null }
+      
+        {user&&recShows? <DisplayRow setRefresh={setUpdatedLiked} header="Recommended" rowData={recShows} allLiked={allLiked}/> : null}
+        <DisplayRow header="Popular" setRefresh={setUpdatedLiked} rowData={popularShows} allLiked={allLiked}/>
+        <DisplayRow header="Top Rated" setRefresh={setUpdatedLiked} rowData={topRatedShows} allLiked={allLiked}/>
         </div>
   )
 }
