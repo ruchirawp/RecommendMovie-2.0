@@ -18,9 +18,9 @@ body {
   min-height: 100%;
   /* background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png"); */
   background-color: var(--Grey);
-  background-image: url("https://www.transparenttextures.com/patterns/climpek.png");
+  background-image: url("https://www.transparenttextures.com/patterns/checkered-pattern.png");
   font-family: "Montserrat";
-
+  
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 /* NAVBAR CSS */
@@ -236,7 +236,7 @@ body {
       rgba(255, 255, 255, 0.322),
       var(--Yellow)
     ),
-    url("https://ventsmagazine.com/wp-content/uploads/2019/12/best-strains-high-movie-watching.jpg");
+    url("https://static.vecteezy.com/system/resources/previews/019/526/878/non_2x/3d-white-wave-texture-background-concept-free-vector.jpg");
   width: 60%;
   height: 600px;
   background-size: cover;
@@ -246,4 +246,31 @@ body {
 
 .formIcons {
   color: var(--Grey);
+}
+
+@media (max-width: 768px) {
+  .LoginContainer {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.322),
+      var(--Yellow)
+    ),
+    url("https://static.vecteezy.com/system/resources/previews/019/526/878/non_2x/3d-white-wave-texture-background-concept-free-vector.jpg");
+    width: 90%;
+    height: 600px;
+    background-size: cover;
+    padding: 20px;
+    margin: auto;
+  }
+
+  .FormAlign {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(0, -50%);
+  }
+
+
 }
