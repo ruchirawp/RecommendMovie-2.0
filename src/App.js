@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Search from './components/search/Search';
 import Shows from './components/shows/Shows';
 import About from './components/About';
+import ChatWidget from './components/ChatWidget';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Footer />
         </SearchContext.Provider>
       </UserContext.Provider>
+      <ChatWidget />
     </div>
   );
 }
