@@ -3,6 +3,8 @@ import { UserContext } from "../../UserContext";
 import DisplayRow from "../display/DisplayRow";
 import axios from 'axios'
 import { baseUrl } from "../../services/baseValues";
+import Spinner from "../UI/Spinner";
+
 
 const Shows = () => {
 
@@ -13,12 +15,16 @@ const Shows = () => {
     const [allLiked, setAllLiked] = useState(null)
     const [updatedLiked, setUpdatedLiked] = useState(false)
     const [reloadRec, setReloadRec] = useState(false)
+    
+    const [isLoading, setIsLoading] = useState(true)
+    
 
     useEffect(() => {
 
       //window.localStorage.getItem("loggedUser") RETURNS a string so use JSON.parse to access local storage vars
       let userTemp = user || JSON.parse(window.localStorage.getItem("loggedUser"));
 
+      setIsLoading(true);
       if(userTemp){
         Promise.all([
           fetch(`${baseUrl}/shows/rec`, {
@@ -50,16 +56,19 @@ const Shows = () => {
           setAllLiked(dataLiked.liked)
         }
       )
+      .finally(() => setIsLoading(false)); // Stop loading once data is fetched
     }
     else{
       const fetchData = async () => {
-        const dataDefault = await axios(
-          // `http://localhost:3001/shows`
-          `${baseUrl}/shows`
-        );
-        setTopRatedShows(dataDefault.data.topRatedShows)
-        setPopularShows(dataDefault.data.popularShows)
-        // setGitData({ data: respGlobal.data, repos: respGlobal.data });
+        try {
+          const dataDefault = await axios.get(`${baseUrl}/shows`);
+          setTopRatedShows(dataDefault.data.topRatedShows)
+          setPopularShows(dataDefault.data.popularShows)
+        } catch (error) {
+          console.error("Error fetching shows:", error);
+        } finally {
+          setIsLoading(false);
+        }
       };
       fetchData();
     }
@@ -71,13 +80,26 @@ const Shows = () => {
     }
 
   return (
-    <div>
+
+<div>
+  {isLoading ? (
+    <div className="spinner-container">
+      <Spinner />
+    </div>
+  ) : (
+    <>
   {updatedLiked&&user? <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}><i class="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended</button> :null }
-      
-        {user&&recShows? <DisplayRow setRefresh={setUpdatedLiked} header="Recommended" rowData={recShows} allLiked={allLiked}/> : null}
+
+    {user&&recShows? <DisplayRow setRefresh={setUpdatedLiked} header="Recommended" rowData={recShows} allLiked={allLiked}/> : null}
         <DisplayRow header="Popular" setRefresh={setUpdatedLiked} rowData={popularShows} allLiked={allLiked}/>
         <DisplayRow header="Top Rated" setRefresh={setUpdatedLiked} rowData={topRatedShows} allLiked={allLiked}/>
-        </div>
+        
+    </>
+  )}
+</div>
+
+
+
   )
 }
 

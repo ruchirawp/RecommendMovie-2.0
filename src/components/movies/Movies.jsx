@@ -2,14 +2,11 @@ import {React,useState,useEffect, useContext} from "react";
 import { UserContext } from "../../UserContext";
 import DisplayRow from "../display/DisplayRow";
 import axios from 'axios'
-import Spinner from "../UI/Spinner";
 import ReplayIcon from '@mui/icons-material/Replay';
 import { baseUrl } from "../../services/baseValues";
 import Button from '@mui/material/Button';
 import "../../styles.css";
-
-
-
+import Spinner from "../UI/Spinner";
 
 const Movies = () => {
 
@@ -29,6 +26,8 @@ const Movies = () => {
 
       //window.localStorage.getItem("loggedUser") RETURNS a string so use JSON.parse to access local storage vars
       let userTemp = user || JSON.parse(window.localStorage.getItem("loggedUser"));
+
+      setIsLoading(true);
 
       if(userTemp){
         Promise.all([
@@ -67,23 +66,25 @@ const Movies = () => {
           setAllLiked(dataLiked.liked)
         }
       )
+      .finally(() => setIsLoading(false)); // Stop loading once data is fetched
     }
     else{
-
       // console.log("USER: ", userTemp)
       const fetchData = async () => {
-        const dataDefault = await axios(
-          // `http://localhost:3001/movies`
-          `${baseUrl}/movies`
-        );
-        setTopRated(dataDefault.data.topRatedMovies)
-        setPopularMovies(dataDefault.data.popularMovies)
-        setUpcomingMovies(dataDefault.data.upcomingMovies) 
+        try {
+          const dataDefault = await axios.get(`${baseUrl}/movies`);
+          setTopRated(dataDefault.data.topRatedMovies);
+          setPopularMovies(dataDefault.data.popularMovies);
+          setUpcomingMovies(dataDefault.data.upcomingMovies);
+        } catch (error) {
+          console.error("Error fetching movies:", error);
+        } finally {
+          setIsLoading(false);
+        }
       };
       fetchData();
     }
 
-    setIsLoading(false)
     }, [reloadRec])
 
     const handleClick = () => {
@@ -93,20 +94,25 @@ const Movies = () => {
 
   return (
     <div>
-
-        {isLoading?
-        <h1>LOADING... </h1>:
-        <>
-        
-      {updatedLiked&&user? <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}><i class="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended</button> :null }
-
-        {user&&recMovies? <DisplayRow setRefresh={setUpdatedLiked} header="Recommended" rowData={recMovies} allLiked={allLiked}/> : null}
-        <DisplayRow header="Popular" setRefresh={setUpdatedLiked} rowData={popularMovies} allLiked={allLiked}/>
-        <DisplayRow header="Top Rated" setRefresh={setUpdatedLiked} rowData={topRated} allLiked={allLiked}/>
-        <DisplayRow header="Upcoming" setRefresh={setUpdatedLiked} rowData={upcomingMovies} allLiked={allLiked}/>
-        </>
-        }
+      {isLoading ? (
+        <div className="spinner-container">
+          <Spinner />
         </div>
+      ) : (
+        <>
+          {updatedLiked && user ? (
+            <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}>
+              <i className="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended
+            </button>
+          ) : null}
+
+          {user && recMovies ? <DisplayRow setRefresh={setUpdatedLiked} header="Recommended" rowData={recMovies} allLiked={allLiked} /> : null}
+          <DisplayRow header="Popular" setRefresh={setUpdatedLiked} rowData={popularMovies} allLiked={allLiked} />
+          <DisplayRow header="Top Rated" setRefresh={setUpdatedLiked} rowData={topRated} allLiked={allLiked} />
+          <DisplayRow header="Upcoming" setRefresh={setUpdatedLiked} rowData={upcomingMovies} allLiked={allLiked} />
+        </>
+      )}
+    </div>
   )
 }
 
