@@ -29,6 +29,7 @@ const Movies = () => {
 
       setIsLoading(true);
 
+      //migrating to AWS LAMBDA. improves SEO and cold start time. 
       if(userTemp){
         Promise.all([
           fetch(`${baseUrl}/movies/rec`, {
