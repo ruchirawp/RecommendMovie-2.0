@@ -49,13 +49,15 @@ const DisplayCard = ({ cardData, cardType, allLiked, setRefresh }) => {
               (!liked
         ? await axios.post(
             // `http://localhost:3001/movies/add/${cardData.id}`,
-            `${baseUrl}/movies/add/${cardData.id}`,
+            // `${baseUrl}/movies/add/${cardData.id}`,
+            `${baseUrl}/addLikedMovie/${cardData.id}`,
             postData,
             axiosConfig
           )
         : await axios.put(
             // `http://localhost:3001/movies/remove/${cardData.id}`,
-            `${baseUrl}/movies/remove/${cardData.id}`,
+            // `${baseUrl}/movies/remove/${cardData.id}`,
+            `${baseUrl}/removeLikedMovie/${cardData.id}`,
             postData,
             axiosConfig
           )

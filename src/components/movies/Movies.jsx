@@ -32,17 +32,20 @@ const Movies = () => {
       //migrating to AWS LAMBDA. improves SEO and cold start time. 
       if(userTemp){
         Promise.all([
-          fetch(`${baseUrl}/movies/rec`, {
+          // fetch(`${baseUrl}/movies/rec`, {
+          fetch(`${baseUrl}/getRecommendedMovies`, {
             method: 'GET', 
             headers:{
               'authorization': `Bearer ${userTemp.token}`,
               'Content-Type': 'application/json'
             }
           }),
-          fetch(`${baseUrl}/movies`, {
+          // fetch(`${baseUrl}/movies`, {
+          fetch(`${baseUrl}/getAllMovies`, {
             method: 'GET', 
           }),
-          fetch(`${baseUrl}/movies/getliked`, {
+          // fetch(`${baseUrl}/movies/getliked`, {
+          fetch(`${baseUrl}/getLikedMovies`, {
             method: 'GET', 
             headers:{
               'authorization': `Bearer ${userTemp.token}`,
@@ -73,7 +76,8 @@ const Movies = () => {
       // console.log("USER: ", userTemp)
       const fetchData = async () => {
         try {
-          const dataDefault = await axios.get(`${baseUrl}/movies`);
+          // const dataDefault = await axios.get(`${baseUrl}/movies`);
+          const dataDefault = await axios.get(`${baseUrl}/getAllMovies`);
           setTopRated(dataDefault.data.topRatedMovies);
           setPopularMovies(dataDefault.data.popularMovies);
           setUpcomingMovies(dataDefault.data.upcomingMovies);
