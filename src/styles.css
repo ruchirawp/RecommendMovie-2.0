@@ -70,11 +70,12 @@ body {
 
 .displayRow {
   height: 530px;
+  margin-left: 20px;
 }
 
 .displayRow .displayRowTitle {
   color: rgb(217, 217, 217);
-  margin-left: 20px;
+  /* margin-left: 20px; */
   margin-bottom: 10px;
   font-size: 1.3rem;
   font-weight: 600;
@@ -373,6 +374,11 @@ body {
   border-radius: 50%; /* Optional: Round corners */
 }
 
+/* SWIPER CAROUSEL  */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ecbf55d3 !important; /* Change arrow color */
+}
 
 /* LOADING SPINNER  */
 
