@@ -377,7 +377,7 @@ body {
 /* SWIPER CAROUSEL  */
 .swiper-button-next,
 .swiper-button-prev {
-  color: #ecbf55d3 !important; /* Change arrow color */
+  color: #ffffffe7 !important; /* Change arrow color */
 }
 
 /* LOADING SPINNER  */

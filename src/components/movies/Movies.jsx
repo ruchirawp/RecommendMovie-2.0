@@ -67,7 +67,7 @@ const Movies = () => {
           setTopRated(dataDefault.topRatedMovies)
           setPopularMovies(dataDefault.popularMovies)
           setUpcomingMovies(dataDefault.upcomingMovies) 
-          setAllLiked(dataLiked.liked)
+          setAllLiked(dataLiked.likedMovies)
         }
       )
       .finally(() => setIsLoading(false)); // Stop loading once data is fetched

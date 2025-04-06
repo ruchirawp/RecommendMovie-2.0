@@ -27,17 +27,20 @@ const Shows = () => {
       setIsLoading(true);
       if(userTemp){
         Promise.all([
-          fetch(`${baseUrl}/shows/rec`, {
+          // fetch(`${baseUrl}/shows/rec`, {
+          fetch(`${baseUrl}/getRecommendedShows`, {
             method: 'GET', 
             headers:{
               'authorization': `Bearer ${userTemp.token}`,
               'Content-Type': 'application/json'
             }
           }),
-          fetch(`${baseUrl}/shows`, {
+          // fetch(`${baseUrl}/shows`, {
+          fetch(`${baseUrl}/getAllShows`, {
             method: 'GET', 
           }),
-          fetch(`${baseUrl}/shows/getliked`, {
+          // fetch(`${baseUrl}/shows/getliked`, {
+          fetch(`${baseUrl}/getLikedShows`, {
             method: 'GET', 
             headers:{
               'authorization': `Bearer ${userTemp.token}`,
@@ -53,7 +56,7 @@ const Shows = () => {
           (dataRec.recommendedShows.length<1? setRecShows(null):setRecShows(dataRec.recommendedShows))
           setTopRatedShows(dataDefault.topRatedShows)
           setPopularShows(dataDefault.popularShows)
-          setAllLiked(dataLiked.liked)
+          setAllLiked(dataLiked.likedShows)
         }
       )
       .finally(() => setIsLoading(false)); // Stop loading once data is fetched
@@ -61,7 +64,8 @@ const Shows = () => {
     else{
       const fetchData = async () => {
         try {
-          const dataDefault = await axios.get(`${baseUrl}/shows`);
+          // const dataDefault = await axios.get(`${baseUrl}/shows`);
+          const dataDefault = await axios.get(`${baseUrl}/getAllShows`);
           setTopRatedShows(dataDefault.data.topRatedShows)
           setPopularShows(dataDefault.data.popularShows)
         } catch (error) {
@@ -88,7 +92,7 @@ const Shows = () => {
     </div>
   ) : (
     <>
-  {updatedLiked&&user? <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}><i class="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended</button> :null }
+  {updatedLiked&&user? <button type="button" className="btn btn-primary btn-sm refreshButton" onClick={handleClick}><i className="fa-solid fa-rotate-right"></i>&nbsp; Reload Recommended</button> :null }
 
     {user&&recShows? <DisplayRow setRefresh={setUpdatedLiked} header="Recommended" rowData={recShows} allLiked={allLiked}/> : null}
         <DisplayRow header="Popular" setRefresh={setUpdatedLiked} rowData={popularShows} allLiked={allLiked}/>

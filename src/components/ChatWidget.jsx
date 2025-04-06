@@ -11,20 +11,52 @@ const ChatWidget = () => {
     const chatRef = useRef(null);
     const chatEndRef = useRef(null);
 
+    // const sendMessage = async () => {
+    //     if (!input.trim()) return;
+
+    //     const newMessages = [...messages, { text: input, sender: "user" }];
+    //     setMessages(newMessages);
+    //     setInput("");
+
+    //     try {
+    //         // const response = await axios.post(`${baseUrl}/chat/message`, { message: input });
+    //         const response = await axios.post(`${baseUrl}/chat`, { message: input });
+    //         setMessages([...newMessages, { text: response.data.reply, sender: "bot" }]);
+    //     } catch (error) {
+    //         console.error("Error:", error);
+    //     }
+    // };
+
     const sendMessage = async () => {
         if (!input.trim()) return;
-
+      
+        // Add user's message to local state
         const newMessages = [...messages, { text: input, sender: "user" }];
         setMessages(newMessages);
         setInput("");
-
+      
+        // Prepare OpenAI-compatible message array (without system role)
+        const openAIMessages = newMessages.map((msg) => ({
+          role: msg.sender === "user" ? "user" : "assistant",
+          content: msg.text,
+        }));
+      
         try {
-            const response = await axios.post(`${baseUrl}/chat/message`, { message: input });
-            setMessages([...newMessages, { text: response.data.reply, sender: "bot" }]);
+          const response = await axios.post(`${baseUrl}/chat`, {
+            messages: openAIMessages,
+          });
+      
+          // Add assistant reply to message history
+          setMessages([
+            ...newMessages,
+            { text: response.data.reply, sender: "bot" }, // or "assistant"
+          ]);
         } catch (error) {
-            console.error("Error:", error);
+          console.error("Error:", error);
         }
-    };
+      };
+      
+
 
     useEffect(() => {
 
