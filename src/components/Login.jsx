@@ -35,9 +35,7 @@ const Login = () => {
       const userFromStorage = JSON.parse(loggedUserJSON);
       setUser(userFromStorage);
       dispatch(setTier(user.user.tier));
-    } else {
-      console.log("USER NOT LOGGED IN");
-    }
+    } 
   }, []);
 
   const handleLogin = async (event) => {

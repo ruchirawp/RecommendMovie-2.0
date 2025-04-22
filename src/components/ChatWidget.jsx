@@ -60,7 +60,7 @@ const ChatWidget = () => {
 
     useEffect(() => {
 
-        console.log(chatEndRef.current);
+        // console.log(chatEndRef.current);
         if (chatEndRef.current) {
             chatEndRef.current.scrollIntoView({ behavior: "smooth" });
         }    
