@@ -5,12 +5,16 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import App from './App';
 import { HashRouter } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './redux/store'; // adjust path if needed
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <HashRouter>
-      <App />
-    </HashRouter>
+    <Provider store={store}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Provider>
 );
 
 //removed strict mode tags from wrappign the app

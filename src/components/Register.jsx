@@ -12,6 +12,9 @@ import {
   MDBInput,
   MDBIcon,
 } from "mdb-react-ui-kit";
+import { useDispatch } from 'react-redux';
+import { setTier } from '../redux/slices/tierSlice'; // adjust the path if needed
+
 
 const Register = () => {
   const { user, setUser } = useContext(UserContext);
@@ -20,6 +23,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const [message, setMessage] = useState(null);
+  const dispatch = useDispatch();
 
   //effect hook to check if user is already logged in by checking the local storage for a user object
   useEffect(() => {
@@ -27,6 +31,7 @@ const Register = () => {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON);
       setUser(user);
+      dispatch(setTier(user.user.tier));
     }
   }, []);
 
@@ -40,6 +45,7 @@ const Register = () => {
         password,
       });
       setUser(user);
+      dispatch(setTier(user.user.tier));
       setName("");
       setPassword("");
       setEmail("");

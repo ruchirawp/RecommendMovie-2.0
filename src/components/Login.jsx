@@ -1,6 +1,9 @@
 import { React, useState, useEffect, useContext } from "react";
 import loginService from "../services/login.js";
 import { UserContext } from "../UserContext";
+import { useDispatch } from 'react-redux';
+import { setTier } from '../redux/slices/tierSlice'; // adjust the path if needed
+
 
 import {
   MDBBtn,
@@ -23,6 +26,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const [message, setMessage] = useState(null);
+  const dispatch = useDispatch();
 
   //effect hook to check if user is already logged in by checking the local storage for a user object
   useEffect(() => {
@@ -30,6 +34,7 @@ const Login = () => {
     if (loggedUserJSON) {
       const userFromStorage = JSON.parse(loggedUserJSON);
       setUser(userFromStorage);
+      dispatch(setTier(user.user.tier));
     } else {
       console.log("USER NOT LOGGED IN");
     }

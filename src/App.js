@@ -9,8 +9,9 @@ import { useState } from "react";
 import Footer from './components/Footer';
 import Search from './components/search/Search';
 import Shows from './components/shows/Shows';
-import About from './components/About';
+import Account from './components/Account';
 import ChatWidget from './components/ChatWidget';
+import Success from './components/payment/Success';
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
               <Route path="/shows" element={<Shows />} />
               <Route path="/register" element={user ? <Navigate to="/movies" /> : <Register />} />
               <Route path="/login" element={user ? <Navigate to="/movies" /> : <Login />} />
+              <Route path="/account" element={<Account />} />
+              <Route path="/payment/success" element={<Success />} />
+              <Route path="/payment/cancel" element={<Movies />} />
             </Routes>
             <Footer />
         </SearchContext.Provider>
