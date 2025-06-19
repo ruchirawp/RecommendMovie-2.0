@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+## 🎬 Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Explore some of the core features of the AI Movie Recommender App with the screenshots below:
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+### 🏠 Homepage – Recommendations & Popular Picks
 
-### `npm start`
+The landing page features recommended movies and trending/popular picks to get you started right away.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Homepage](./demo/homepage.PNG)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### ❤️ Movie & TV Show Cards – Like and Refine Your Recs
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Click on any movie/show to view its info. You can **like** it to update your recommendation feed based on your taste.
 
-### `npm run build`
+![Liked Show Card](./demo/likedshow.PNG)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🔍 Search Functionality
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Easily search for any movie or TV show using the built-in search bar in the top right corner.
 
-### `npm run eject`
+![Search Feature](./demo/search.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🎟️ Subscription Tiers
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Choose from 3 access levels:
+- **Free Ticket** 🎫 – Basic access  
+- **Cinema Plus** 🍿 – Unlock advanced filters  
+- **Directors Cut** 🎬 – Full features + no ads  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![Access Tiers](./demo/tiers.PNG)
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 🤖 AI Chatbot Assistant
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Integrated with the **ChatGPT API**, the chatbot helps users get specific recommendations and answer any movie/TV-related questions in a conversational way.
 
-### Code Splitting
+![Chatbot](./demo/chatbot.PNG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Let me know if you'd like a Loom video section or tech stack summary added below this!
