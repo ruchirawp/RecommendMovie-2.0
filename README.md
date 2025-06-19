@@ -8,7 +8,7 @@ Explore some of the core features of the AI Movie Recommender App with the scree
 
 The landing page features recommended movies and trending/popular picks to get you started right away.
 
-![Homepage](./demo/homepage.PNG)
+![Homepage](./rec_mov_demo/homepage.PNG)
 
 ---
 
@@ -16,7 +16,7 @@ The landing page features recommended movies and trending/popular picks to get y
 
 Click on any movie/show to view its info. You can **like** it to update your recommendation feed based on your taste.
 
-![Liked Show Card](./demo/likedshow.PNG)
+![Liked Show Card](./rec_mov_demo/likedshow.PNG)
 
 ---
 
@@ -24,7 +24,7 @@ Click on any movie/show to view its info. You can **like** it to update your rec
 
 Easily search for any movie or TV show using the built-in search bar in the top right corner.
 
-![Search Feature](./demo/search.PNG)
+![Search Feature](./rec_mov_demo/search.PNG)
 
 ---
 
@@ -35,7 +35,7 @@ Choose from 3 access levels:
 - **Cinema Plus** 🍿 – Unlock advanced filters  
 - **Directors Cut** 🎬 – Full features + no ads  
 
-![Access Tiers](./demo/tiers.PNG)
+![Access Tiers](./rec_mov_demo/tiers.PNG)
 
 ---
 
@@ -43,8 +43,6 @@ Choose from 3 access levels:
 
 Integrated with the **ChatGPT API**, the chatbot helps users get specific recommendations and answer any movie/TV-related questions in a conversational way.
 
-![Chatbot](./demo/chatbot.PNG)
+![Chatbot](./rec_mov_demo/chatbot.PNG)
 
 ---
-
-Let me know if you'd like a Loom video section or tech stack summary added below this!
